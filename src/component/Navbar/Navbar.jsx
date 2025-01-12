@@ -30,7 +30,7 @@ function NavbarSection() {
     <>
        <Navbar expand="lg">
       <Container>
-        <Navbar.Brand href="/">Nada Samy</Navbar.Brand>
+        <Navbar.Brand href="/" className='light-text'>Nada Samy</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
 
         <Navbar.Collapse id="navbarScroll">
@@ -39,9 +39,9 @@ function NavbarSection() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/">{t("Home")}</Nav.Link>
-            <Nav.Link href="#project">{t("Projects")}</Nav.Link>
-            <Nav.Link href="#contact">{t("Contact me")}</Nav.Link>
+            <Nav.Link href="/" className='light-text'>{t("Home")}</Nav.Link>
+            <Nav.Link href="#project" className='light-text'>{t("Projects")}</Nav.Link>
+            <Nav.Link href="#contact" className='light-text'>{t("Contact me")}</Nav.Link>
           </Nav>
           <div className='nav-right'>
              <ul className='nav-links'>

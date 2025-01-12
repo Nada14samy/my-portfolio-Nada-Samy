@@ -1,15 +1,19 @@
+import { useEffect } from 'react';
 // bootstrap
 import Container from 'react-bootstrap/Container';
 // css
 import "./Header.css";
 import { useTranslation } from "react-i18next";
-import i18n from '../../Translation.js';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Header = () => {
     const {t} = useTranslation();
+    useEffect(() => {
+        AOS.init();
+    }, []);
   return (
     <>
-        <header className="Header">
+        <header className="Header" data-aos="zoom-in">
             <Container>
                 <div className="title-header">
                     <span>{t("title")}</span>

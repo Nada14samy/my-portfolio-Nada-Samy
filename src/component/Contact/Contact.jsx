@@ -1,10 +1,9 @@
-import { useRef , useState } from 'react';
+import { useRef , useState ,useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 // icon
@@ -13,16 +12,52 @@ import { FaPhoneAlt , FaEnvelope ,FaLinkedin } from "react-icons/fa";
 import "./Contact.css";
 import { useTranslation } from "react-i18next";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Contact = () => {
     const {t} = useTranslation();
     const form = useRef();
+    useEffect(() => {
+      AOS.init();
+      AOS.refresh();
+    }, []);
     const [showMessage , setShowMessage] = useState(false);
     const [message , setMessage] = useState({
         title: "",
         messageText : ""
     });
+    const [errors, setErrors] = useState({}); // لتخزين الأخطاء
+    const [formData, setFormData] = useState({
+      user_name: '',
+      user_email: '',
+      message: '',
+    });
+    const validate = () => {
+      const newErrors = {};
+      if (!formData.user_name.trim()) newErrors.user_name = 'Name is required.';
+      if (!formData.user_email.trim()) {
+        newErrors.user_email = 'Email is required.';
+      } else if (!/\S+@\S+\.\S+/.test(formData.user_email)) {
+        newErrors.user_email = 'Invalid email format.';
+      }
+      if (!formData.message.trim()) newErrors.message = 'Message is required.';
+      return newErrors;
+    };
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+    };
+
   const sendEmail = (e) => {
     e.preventDefault();
+
+    const formErrors = validate();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors); // إذا وجدت أخطاء، قم بعرضها
+      return;
+    }
 
     emailjs
       .sendForm('service_o5yvfpp', 'template_vspez1y', form.current, {
@@ -48,7 +83,7 @@ const Contact = () => {
       );
   };
   return (
-    <section className='contact' id='contact'>
+    <section className='contact' id='contact' data-aos="zoom-in" data-aos-duration="3000">
         <Container>
             <Row>
                 <Col>
@@ -75,16 +110,20 @@ const Contact = () => {
                 <Col>
                     <form ref={form} onSubmit={sendEmail}>
                         <div className='input-div'>
-                            <label htmlFor="name">{t("form.name")}</label>
-                            <input type="text" name="user_name" placeholder={t("form.name")} id='name'/>
+                            <label htmlFor="name" style={{display: "flex" , alignItems: "center"}}>{t("form.name")} {errors.user_name && <span className="error-span">*</span>}</label>
+                            <input type="text" value={formData.user_name}
+                              onChange={handleInputChange} name="user_name" placeholder={t("form.name")} id='name'/>  
+                             {errors.user_name && <p className="error">{errors.user_name}</p>}
                         </div>
                         <div className='input-div'>
-                            <label htmlFor="email">{t("form.email")}</label>
-                            <input type="email" name="user_email" placeholder={t("form.email")} id='email'/>
+                            <label htmlFor="email" style={{display: "flex" , alignItems: "center"}}>{t("form.email")} {errors.user_email && <span className="error-span">*</span>}</label>
+                            <input type="email" value={formData.user_email} onChange={handleInputChange} name="user_email" placeholder={t("form.email")} id='email'/>
+                            {errors.user_email && <p className="error">{errors.user_email}</p>}
                         </div>
                         <div className='input-div'>
-                            <label htmlFor="message">{t("form.message")}</label>
-                            <textarea name="message" id="message" cols={30} rows={10} />
+                            <label htmlFor="message" style={{display: "flex" , alignItems: "center"}}>{t("form.message")} {errors.message && <span className="error-span">*</span>}</label>
+                            <textarea name="message" value={formData.message} onChange={handleInputChange} id="message" cols={30} rows={10} />
+                            {errors.message && <p className="error">{errors.message}</p>}
                         </div>
                         <div className='button-div'>
                             <button>{t("form.sendMessage")}</button>
