@@ -1,0 +1,38 @@
+{
+    "title": "I'm a",
+  "name": "Nada Samy",
+  "role": "Front-End Developer | React.js",
+  "description": "I have one year of experience in the field of front-end web development. I specialize in creating user-friendly and visually appealing web interfaces, working with the latest technologies to ensure an optimal browsing experience.",
+  "Home": "Home",
+  "About me": "About me",
+  "Projects": "Projects",
+  "Skills": "Skills",
+  "Contact me": "Contact me",
+  "all": "All",
+  "react": "React",
+  "js": "JS",
+  "staticTemplate": "Static template",
+  "descriptionProject-1": "A simple static website built with HTML for structure, CSS for styling, and Bootstrap for responsive design and ready-made UI components.",
+  "technologiesTitle": "Technologies:",
+  "technologies": {
+    "html": "HTML 5",
+    "css": "CSS",
+    "bootstrap": "Bootstrap 5",
+    "tailwind": "Tailwind CSS",
+    "react": "React.Js",
+    "node": "Node.Js"
+  },
+  "descriptionProject-2": "Simple House is a platform that offers a variety of easy and delicious recipes for all skill levels. With clear instructions and helpful tips, it makes cooking enjoyable for everyone!",
+  "descriptionProject-3": "Petopia is a bilingual pet adoption website that simplifies finding and adopting pets by providing detailed information for pet lovers in Arabic and English.",
+  "viewProject": "View Project",
+  "Contact Me": "Contact Me",
+  "form": {
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Your Message",
+    "sendMessage": "Send Message"
+  },
+  "footer": {
+    "copyright": "© 2025 All Rights Reserved | Designed by Nada Samy"
+  }
+}

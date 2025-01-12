@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Quicksand';
+    src: url('./assets/fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Rubik';
+    src: url('./assets/fonts/Rubik-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+body{
+    background: #000014;
+    font-family: "Quicksand", "Rubik", serif;
+}
+.light-mode{
+    background-color: #fff;
+    color: #000014 !important;
+}
+*{
+    color: #fff !important;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    padding-inline-start: 0px !important;
+}
