@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import ButtonDarkMode from "../../component/buttonDarkMode/ButtonDarkMode.jsx";
+import ButtonDarkMode from "../../component/ButtonDarkMode/ButtonDarkMode.jsx";
 // css
 import "./Navbar.css";
 // translations
